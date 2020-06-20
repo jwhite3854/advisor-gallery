@@ -1,0 +1,51 @@
+html, body { height: 100%; background-color: #333; color: #eee; }
+.bgwrapper { -webkit-box-shadow: inset 0 -8rem 10rem rgba(0,0,0,0.9); box-shadow: inset 0 -8rem 10rem rgba(0, 0, 0, 0.9); overflow: auto;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.navbar { background-color: #101010; }
+.site_inner { margin: 16px auto; padding: 20px 40px 60px; background: #080808; border-radius: 4px; }
+
+.navbar-custom { background-color: #222; opacity: 0.2; }
+
+.video-responsive { overflow:hidden; padding-bottom:56.25%; position:relative; height:0; background-color: #000; }
+.video-responsive.portrait { overflow:hidden; padding-bottom:80%; position:relative; height:0; background-color: #000; }
+.video-responsive video { left:0; top:0; height:100%; width:100%; position:absolute; }
+
+.lity-iframe-container { padding-top: 90% !important; } 
+.sbimg { max-height: 200px; width: auto; max-width: 200px; } 
+.sbimgbg {  width: 100%; height: 150px; } 
+.gridid { display: inline-block; margin: 4px; width: 30%; }
+
+.sl-overlay { background: #000 !important; }
+.sl-wrapper .sl-close, .sl-wrapper .sl-counter, .sl-wrapper .sl-navigation button { color: #ddd !important; }
+
+.side-nav .menu-arrow { font-size: 1.7rem; font-family: inherit; }
+
+.side-nav .menu-arrow:before {
+    content: "\203A"
+}
+
+.button-menu-mobile {
+    float: right;
+    width: 40px;
+    margin-right: 16px;
+}
+
+.button-menu-mobile span:nth-of-type(2) {
+    width: 100%;
+}
+
+.logo-lg {
+    color: #8391a2;
+    font-size: 1.75rem;
+    font-family: 'Kaushan Script', cursive;
+}
+
+.logo-lg:hover, .logo-lg.active {
+    color: #fff;
+}

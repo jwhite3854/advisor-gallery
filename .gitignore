@@ -1,0 +1,8 @@
+assets/data/*
+!assets/data/.gitkeep
+
+config/*
+!config/.htaccess
+
+images/*
+!images/.htaccess
