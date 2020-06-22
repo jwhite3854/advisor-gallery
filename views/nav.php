@@ -1,48 +1,3 @@
-<?php 
-
-$request_uri = trim($_SERVER['REQUEST_URI'], '/');
-$request = str_replace( '20481536', '', $request_uri );
-
-$routes = ArchiveApp::getRoutes();
-
-
-$links = [];
-$children = [];
-$grand_children = [];
-foreach ($routes as $path => $route) {
-
-    $parts = explode('/', $path);
-    $key = $parts[0];
-
-    $links[$key] = [
-        'title' => ucwords(str_replace('-', ' ', $key)),
-        'link' => $path,
-    ];
-
-    if ( count($parts) > 1 ) {
-        $key2 = $parts[1];
-        $children[$key][$key2] = [
-            'title' => ucwords(str_replace('-', ' ', $key2)),
-            'link' => $path,
-        ];
-
-        if (count($parts) > 2) {
-            $key3 = $parts[2];
-            $grand_children[$key2][$key3] = [
-                'title' => ucwords(str_replace('-', ' ', $key3)),
-                'link' => $path
-            ];
-        }
-    }
-}
-
-//echo '<pre style="color:#FFF">';
-//var_dump($links);
-//var_dump($children);
-//var_dump($grand_children);
-//echo '</pre>';
-
-?>
 <style>
 
 .dropdown-submenu {
@@ -113,34 +68,6 @@ foreach ($routes as $path => $route) {
                         </ul>
                     </div>
                 </li>
-
-
-                <?php foreach ( $links as $key => $link ): 
-                    $is_active = ( $link['link'] == $request ? ' active' : ''); 
-                    $is_dropdown = ( array_key_exists($key, $children) ? ' dropdown dropwide' : ''); 
-                    ?>
-
-                    <li class="nav-item<?php echo $is_active ?><?php echo $is_dropdown ?>">
-                    <?php if ( array_key_exists($key, $children) ): ?>
-                        <a class="nav-link dropdown-toggle" href="#" id="<?php echo $link['link'] ?>w" data-toggle="dropdown"><?php echo $link['title'] ?></a>
-                        <div class="dropdown-menu" aria-labelledby="<?php echo $link['link'] ?>w">
-                        <?php foreach ( $children[$key] as $child ):  $is_child_active = ( $child['link'] == $request ? ' active' : ''); ?>
-                            <a class="dropdown-item <?php echo $is_child_active ?>" href="<?php echo Url::render($child['link']) ?>"><?php echo $child['title'] ?></a>
-                        <?php endforeach; ?>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown dropnarrow<?php echo $is_active ?>">
-                        <a class="nav-link dropdown-toggle" data-toggle="collapse" href="#<?php echo $link['link'] ?>"><?php echo $link['title'] ?></a>
-                        <div class="collapse" id="<?php echo $link['link'] ?>" >
-                        <?php foreach ( $children[$key] as $child ): $is_child_active = ( $child['link'] == $request ? ' active' : '');  ?>
-                            <a class="dropdown-item <?php echo $is_child_active ?>" href=<?php echo Url::render($child['link']) ?>"><?php echo $child['title'] ?></a>
-                        <?php endforeach; ?>
-                        </div>
-                    <?php else: ?>
-                        <a class="nav-link" href="<?php echo Url::render($link['link']) ?>"><?php echo $link['title'] ?></a>
-                    <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
             </ul>
         </div>
     </div>   

@@ -4,9 +4,10 @@ class homeController extends Controller {
     public function index(){
 
         $data = array();
+        $data['enable_toggle'] = Registry::see('api_favorites_enable_toggle');
+        $data['favorites'] = array();
 
-        if (1) {
-
+        if ($data['enable_toggle']) {
             $file = ArchiveApp::getConfig('file_base').'/assets/data/favs.json';
             $favsRaw = file_get_contents($file);
             $favsData = json_decode($favsRaw, true);
@@ -115,6 +116,7 @@ class homeController extends Controller {
         $favsRaw = file_get_contents($file);
         $favsData = json_decode($favsRaw, true);
         $data['favorites'] = array_values($favsData['data']);
+        $data['enable_toggle'] = Registry::see('api_favorites_enable_toggle');
 
         $layoutData = array(
             'meta' => array(
@@ -135,6 +137,21 @@ class homeController extends Controller {
                 'async' => '',
                 'defer' => ''
             ),
+            array(
+                'src' => 'main.js',
+                'async' => '',
+                'defer' => ''
+            ),
+            array(
+                'src' => 'masonry.min.js',
+                'async' => '',
+                'defer' => ''
+            ),
+            array(
+                'src' => 'archive-masonry.js',
+                'async' => '',
+                'defer' => ''
+            )
         );
     
         return $this->render($data, $layoutData, $styles, $scripts);

@@ -143,6 +143,12 @@ class Registry
         $_SESSION[$key] = $value;
     }
 
+    public static function see($key)
+    {
+        session_start();
+        return $_SESSION[$key];
+    }
+
     public static function get($key)
     {
         session_start();

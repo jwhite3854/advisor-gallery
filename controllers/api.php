@@ -12,7 +12,6 @@ class apiController extends Controller {
         $src = filter_input(INPUT_POST, "src");
         $srcID = md5($src);
 
-
         if ( $isRemove = array_key_exists($srcID, $favs) ) {
             unset($favs[$srcID]);
         } else {
@@ -24,5 +23,26 @@ class apiController extends Controller {
         file_put_contents($file, json_encode($favsData) );
 
         return $isRemove;
+    }
+
+    public function toggleFavoriteMode()
+    {
+        $enabled = filter_input(INPUT_POST, "enabled", FILTER_VALIDATE_BOOLEAN);
+        Registry::set('api_favorites_enable_toggle', !$enabled);
+    }
+
+    public function clearAllFavorites()
+    {
+        $src = filter_input(INPUT_POST, "src");
+        if ( $src === "1" ) {
+            $favsData = array(
+                'data' => array()
+            );
+    
+            $file = ArchiveApp::getConfig('file_base').'/assets/data/favs.json';
+            file_put_contents($file, json_encode($favsData) );
+        }
+
+        return $src;
     }
 }

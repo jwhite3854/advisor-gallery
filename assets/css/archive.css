@@ -36,6 +36,10 @@ html, body { height: 100%; background-color: #333; color: #eee; }
     margin-right: 16px;
 }
 
+.button-menu-mobile:hover span {
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
 .button-menu-mobile span:nth-of-type(2) {
     width: 100%;
 }
@@ -48,4 +52,54 @@ html, body { height: 100%; background-color: #333; color: #eee; }
 
 .logo-lg:hover, .logo-lg.active {
     color: #fff;
+}
+
+.mb-3 {
+	position: relative;
+}
+
+.favToggler {
+	width: 48px;
+	height: 48px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.toggleInterior {
+	border: 8px #555 solid;
+	height: 46px;
+	background-color:transparent;
+	border-radius: 50%;
+}
+
+.chosen .toggleInterior {
+	border: 8px rgb(7, 112, 7) solid;
+	background-color: rgb(12, 161, 12);
+}
+
+.menuFavToggler {
+    border: none;
+    color: #f1f1f1;
+    line-height: 70px;
+    background-color: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    float: right;
+    margin-right: 16px;
+}
+
+.menuFavToggler-icon {
+    border-radius: 50%; 
+    border: 4px #999 solid; 
+    width: 32px; 
+    height: 32px;
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.menuFavToggler.toggleOn .menuFavToggler-icon {
+    background-color:#0f0;
 }
